@@ -1,3 +1,68 @@
+# ===================
+# Python
+# ===================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Ignore virtual environments
 venv/
+ENV/
+env/
+.venv/
+
+# ===================
+# Static files
+# ===================
+# 忽略 static/mc1.21.4_textures.zip 和整个 mc1.21.4_textures 文件夹
+static/mc1.21.4_textures/
+static/mc1.21.4_textures.zip
+
+# ===================
+# System files
+# ===================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ===================
+# Editor/IDE files
+# ===================
+.vscode/
 .idea/
-__pychache__/
+*.sublime-workspace
+*.sublime-project
+
+# ===================
+# Logs / cache
+# ===================
+*.log
+*.bak
+*.swp
+*.tmp
+.cache/
+*.coverage
+
+# ===================
+# Test / Jupyter / Build Artifacts
+# ===================
+*.ipynb
+*.egg-info/
+dist/
+build/
+htmlcov/
+
+# ===================
+# Pytorch / ML-related
+# ===================
+*.pt
+*.pth
+*.onnx
+*.npz
+runs/               # torch.utils.tensorboard 默认输出
+checkpoints/
+output/
+models/

@@ -20,7 +20,8 @@ source ./venv/bin/activate
 
 ```bash
 pip install -r requirements.txt
-uvicorn main:app --reload --port 8989
+uvicorn main:app --reload --port 8989 --host 0.0.0.0
+/home/bawuyinguo/SSoftwareFiles/fastapi/fastapi-awa-fuzzy-search-backend/venv/bin/python -m uvicorn main:app --reload --port 8989
 ```
 
 
