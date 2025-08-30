@@ -1,0 +1,11 @@
+fastapi
+pydantic-settings
+uvicorn
+sentence-transformers
+transformers
+fuzzywuzzy
+python-Levenshtein
+torch
+numpy
+langdetect
+sentencepiece

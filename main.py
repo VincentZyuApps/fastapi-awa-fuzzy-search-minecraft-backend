@@ -12,22 +12,22 @@ import logging
 from pydantic import BaseModel
 
 from fuzzy_search import FuzzySearch
-
-
-# app: Any = FastAPI()
+from config_manager import settings
 
 
 @asynccontextmanager
 async def lifespan(fastapi_app: FastAPI):
     """生命周期管理：预加载文件列表和模型"""
-    # 获取所有文件路径（复用tree端点逻辑）
     file_list = []
+    # 获取所有文件路径
     for root, _, files in os.walk(BASE_DIR):
         rel_root = Path(root).relative_to(BASE_DIR)
         file_list.extend(str(rel_root / f) for f in files)
 
-    fuzzy_searcher: FuzzySearch = FuzzySearch(file_list)
+    # 传递设备设置给 FuzzySearch 实例
+    fuzzy_searcher: FuzzySearch = FuzzySearch(file_list, device=settings.DEVICE)
     # 初始化搜索模块
+    await fuzzy_searcher.init_models()
     fastapi_app.state.fuzzy_searcher = fuzzy_searcher
     yield
 
@@ -35,7 +35,6 @@ async def lifespan(fastapi_app: FastAPI):
 app = FastAPI(
     lifespan=lifespan
 )
-# app.__class__ = FastAPI
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
@@ -50,7 +49,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # 定义材质根目录
-BASE_DIR = Path(__file__).parent / "static" / "mc1.21.4_textures"
+BASE_DIR = Path(__file__).parent / "static" / "textures"
 
 
 # -------------------------- 统一异常处理 --------------------------
@@ -185,7 +184,7 @@ async def list_tree(dir_path: str = None, limit: int = None, mode: str = "ascend
         file_list = []
         for root, _, files in os.walk(target_dir):
             rel_root = Path(root).relative_to(BASE_DIR)
-            for file in sorted(files):  # 按文件名排序[3](@ref)
+            for file in sorted(files):
                 file_path = rel_root / file
                 file_list.append(str(file_path))
 
@@ -217,15 +216,6 @@ async def list_tree(dir_path: str = None, limit: int = None, mode: str = "ascend
         raise HTTPException(500, "目录遍历失败")
 
 
-# @app.get("/fuzzy_guess")
-# async def fuzzy_search_endpoint(
-#         keyword: str,
-#         limit: int = Query(5, ge=1, le=20)
-# ):
-#     """模糊搜索端点"""
-#     searcher = app.state.fuzzy_searcher
-#     return await searcher.search(keyword, limit)
-
 @app.get("/fuzzy_guess")
 async def fuzzy_search_endpoint(
         keyword: str,
@@ -252,5 +242,3 @@ async def fuzzy_search_endpoint(
             message=f"搜索失败: {str(e)}",
             data={}
         )
-
-

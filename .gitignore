@@ -1,3 +1,4 @@
+env/
 # ===================
 # Python
 # ===================
@@ -8,17 +9,11 @@ __pycache__/
 *.pyc
 
 # Ignore virtual environments
+venv*/
 venv/
 ENV/
 env/
 .venv/
-
-# ===================
-# Static files
-# ===================
-# 忽略 static/mc1.21.4_textures.zip 和整个 mc1.21.4_textures 文件夹
-static/mc1.21.4_textures/
-static/mc1.21.4_textures.zip
 
 # ===================
 # System files
@@ -66,3 +61,8 @@ runs/               # torch.utils.tensorboard 默认输出
 checkpoints/
 output/
 models/
+
+# ===================
+# Custom: Ignore assets folder
+# ===================
+assets/
