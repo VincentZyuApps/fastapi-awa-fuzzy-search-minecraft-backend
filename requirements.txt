@@ -161,7 +161,6 @@ triton==3.2.0
     # via torch
 typing-extensions==4.12.2
     # via
-    #   anyio
     #   fastapi
     #   huggingface-hub
     #   pydantic

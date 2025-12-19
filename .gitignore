@@ -63,6 +63,6 @@ output/
 models/
 
 # ===================
-# Custom: Ignore assets folder
+# assets folder
 # ===================
 assets/

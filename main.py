@@ -1,12 +1,17 @@
 # main.py
+import os
 import random
 from typing import Any
 from contextlib import asynccontextmanager
+
+# 设置代理，确保能访问 Hugging Face
+os.environ["HTTP_PROXY"] = "http://192.168.31.84:7890"
+os.environ["HTTPS_PROXY"] = "http://192.168.31.84:7890"
+
 from fastapi import FastAPI, HTTPException, Request, Query
 from fastapi.openapi.docs import get_redoc_html
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-import os
 from pathlib import Path
 import logging
 from pydantic import BaseModel

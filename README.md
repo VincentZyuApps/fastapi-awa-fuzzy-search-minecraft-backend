@@ -24,7 +24,8 @@ uv pip compile requirements.in -o requirements.txt
 uv pip install -r requirements.txt
 uv pip sync requirements.txt
 uv run python test_pytorch.py
-proxychains4 uv run uvicorn main:app --reload --port 8989 --host 0.0.0.0
+proxychains4 /root/.local/bin/uv run uvicorn main:app --reload --port 8989 --host 0.0.0.0
+proxychains4 /root/.local/bin/uv run uvicorn main:app --port 8989 --host 0.0.0.0
 ```
 
 ## git
@@ -42,6 +43,31 @@ PORT=8830
 MC_VERSION=1.21.8
 ```
 
+## static tree
+```bash
+
+root@pop-os:/home/zyu/SSoftwareFiles/fastapi/fastapi-awa-fuzzy-search-backend/static# tree -L 2
+.
+├── mc1.21.8_textures.zip
+└── textures
+    ├── block
+    ├── colormap
+    ├── effect
+    ├── entity
+    ├── environment
+    ├── font
+    ├── gui
+    ├── item
+    ├── map
+    ├── misc
+    ├── mob_effect
+    ├── painting
+    ├── particle
+    └── trims
+
+15 directories, 1 file
+root@pop-os:/home/zyu/SSoftwareFiles/fastapi/fastapi-awa-fuzzy-search-backend/static# 
+```
 
 ### 一些todo:
 
