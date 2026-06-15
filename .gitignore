@@ -1,6 +1,11 @@
-env/
 # ===================
-# Python
+# 🗑️ Temp files
+# ===================
+**/temp/
+**/tmp/
+
+# ===================
+# 🐍 Python cache and venv
 # ===================
 __pycache__/
 *.py[cod]
@@ -8,15 +13,15 @@ __pycache__/
 *.pyd
 *.pyc
 
-# Ignore virtual environments
-venv*/
-venv/
-ENV/
-env/
-.venv/
+**/env/
+**/venv*/
+**/venv/
+**/ENV/
+**/env/
+**/.venv/
 
 # ===================
-# System files
+# 🖥️ System files
 # ===================
 .DS_Store
 Thumbs.db
@@ -24,7 +29,7 @@ ehthumbs.db
 desktop.ini
 
 # ===================
-# Editor/IDE files
+# 🛠️ Editor/IDE files
 # ===================
 .vscode/
 .idea/
@@ -32,7 +37,7 @@ desktop.ini
 *.sublime-project
 
 # ===================
-# Logs / cache
+# 📋 Logs / cache
 # ===================
 *.log
 *.bak
@@ -42,7 +47,7 @@ desktop.ini
 *.coverage
 
 # ===================
-# Test / Jupyter / Build Artifacts
+# 🧪 Test / Jupyter / Build Artifacts
 # ===================
 *.ipynb
 *.egg-info/
@@ -51,18 +56,29 @@ build/
 htmlcov/
 
 # ===================
-# Pytorch / ML-related
+# 🤖 Pytorch / Huggingface ML-related
 # ===================
 *.pt
 *.pth
 *.onnx
 *.npz
-runs/               # torch.utils.tensorboard 默认输出
+runs/
 checkpoints/
 output/
 models/
 
 # ===================
-# assets folder
+# ⚙️ Config / Lock files
 # ===================
-assets/
+config.yaml
+requirements.txt
+
+# ===================
+# 💾 Local data
+# ===================
+data/
+
+# ===================
+# 🎮 Minecraft textures (用 scripts/download_mc_textures.py 获取)
+# ===================
+static/
