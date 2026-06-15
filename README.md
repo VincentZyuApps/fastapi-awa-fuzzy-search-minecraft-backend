@@ -1,4 +1,4 @@
-# 🎮 FastAPI AWA Fuzzy Search Backend
+# 🎮 fastapi-awa-fuzzy-search-minecraft-backend
 
 Minecraft 材质模糊搜索后端，支持 🌏 中英文混合搜索、🧠 语义匹配与 🔍 模糊匹配。
 
