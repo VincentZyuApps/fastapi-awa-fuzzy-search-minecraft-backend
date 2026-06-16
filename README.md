@@ -1,5 +1,10 @@
 ![fastapi-awa-fuzzy-search-minecraft-backend](https://socialify.git.ci/VincentZyuApps/fastapi-awa-fuzzy-search-minecraft-backend/image?description=1&font=JetBrains+Mono&forks=1&issues=1&language=1&logo=https%3A%2F%2Fgithub.com%2FVincentZyuApps%2Ffastapi-awa-fuzzy-search-minecraft-backend%2Fblob%2Fmain%2Fassets%2F4icon.png%3Fraw%3Dtrue&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
 
+<div align="center">
+  <a href="https://github.com/VincentZyuApps/fastapi-awa-fuzzy-search-minecraft-backend"><img src="https://img.shields.io/badge/GitHub-VincentZyuApps/fastapi--awa--fuzzy--search--minecraft--backend-181717?style=flat-square&logo=github" alt="GitHub"></a>
+  <a href="https://gitee.com/vincent-zyu/fastapi-awa-fuzzy-search-backend"><img src="https://img.shields.io/badge/Gitee-vincent--zyu/fastapi--awa--fuzzy--search--backend-C71D23?style=flat-square&logo=gitee" alt="Gitee"></a>
+</div>
+
 # 🎮 fastapi-awa-fuzzy-search-minecraft-backend
 
 Minecraft 材质模糊搜索后端，支持 🌏 中英文混合搜索、🧠 语义匹配与 🔍 模糊匹配。
