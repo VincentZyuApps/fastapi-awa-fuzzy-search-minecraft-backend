@@ -9,7 +9,8 @@ uvicorn
 # ═══════════════════════════════════════════
 torch<2.7
 sentence-transformers
-transformers
+transformers<5
+sentencepiece
 
 # ═══════════════════════════════════════════
 # 🔍 模糊搜索 / 语言检测
@@ -29,3 +30,4 @@ python-multipart
 # 🎨 终端美化输出
 # ═══════════════════════════════════════════
 rich
+tqdm

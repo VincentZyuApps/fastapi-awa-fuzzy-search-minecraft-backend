@@ -59,9 +59,10 @@ curl -LsSf https://gitee.com/wangnov/uv-custom/releases/download/latest/uv-insta
 ```bash
 # 🐍 创建 Python 3.13 虚拟环境
 uv venv --python 3.13
-# 🔒 解析依赖并生成锁定文件
+# 🔒 解析依赖并生成锁定文件，然后从txt安装依赖
 uv pip compile requirements.in -o requirements.txt
-# 📦 安装所有依赖
+uv pip install -r requirements.txt
+# 📦 或者直接从txt安装所有依赖，跳过pip compile
 uv pip install -r requirements.txt
 ```
 

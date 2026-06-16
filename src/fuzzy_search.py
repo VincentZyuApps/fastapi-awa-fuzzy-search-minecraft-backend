@@ -9,13 +9,15 @@ import numpy as np
 import asyncio
 import logging
 
+from rich.console import Console
+
 logger = logging.getLogger(__name__)
+console = Console()
 
 
 class FuzzySearch:
     def __init__(self, file_list: list[str], device: str = "cuda"):
         self.device = torch.device(device)
-        logger.info(f"Using device: {self.device}")
 
         self.file_names = file_list
         self.semantic_model = None
@@ -26,31 +28,33 @@ class FuzzySearch:
     async def init_models(self):
         await asyncio.to_thread(self._load_models)
         self.file_vectors = await asyncio.to_thread(self._precompute_vectors)
+        console.print(f"  [green]✓[/green] 向量编码完成 ([dim]{len(self.file_names)} 文件, {self.file_vectors.shape[1]} 维[/dim])")
         if self.device.type == "cuda":
             self.file_vectors = self.file_vectors.to(self.device)
-            logger.info("File vectors loaded onto GPU.")
+            console.print(f"  [green]✓[/green] 已传输到 [dim]{self.device}[/dim]")
 
     def _load_models(self):
         self.semantic_model = SentenceTransformer(
             "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
             device=self.device,
         )
+        console.print("  [green]✓[/green] 语义模型加载完成")
         self.translator_zh2en = pipeline(
-            task="translation",
             model="Helsinki-NLP/opus-mt-zh-en",
             device=self.device,
         )
+        console.print("  [green]✓[/green] 中译英模型加载完成")
         self.translator_en2zh = pipeline(
-            task="translation",
             model="Helsinki-NLP/opus-mt-en-zh",
             device=self.device,
         )
+        console.print("  [green]✓[/green] 英译中模型加载完成")
 
     def _precompute_vectors(self):
         return self.semantic_model.encode(
             self.file_names,
             convert_to_tensor=True,
-            show_progress_bar=True,
+            show_progress_bar=False,
             device=self.device,
         )
 
